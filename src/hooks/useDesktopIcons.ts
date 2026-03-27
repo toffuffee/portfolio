@@ -29,7 +29,6 @@ export function useDesktopIcons(initialIcons: DesktopIcon[]) {
   const onMouseDownIcon = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
 
-    // Если двойной клик, не делаем выделение
     if (e.detail > 1) return;
 
     setDraggingIcon(id);
