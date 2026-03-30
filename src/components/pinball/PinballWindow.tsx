@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from 'react';
 
 const ROWS = 5;
 const COLS = 8;
@@ -25,7 +25,7 @@ export const PinballWindow: React.FC = () => {
       x: (idx % COLS) * (BLOCK_WIDTH + 5) + 20,
       y: Math.floor(idx / COLS) * (BLOCK_HEIGHT + 5) + 20,
       alive: true,
-    })),
+    }))
   );
 
   const restartGame = () => {
@@ -38,15 +38,15 @@ export const PinballWindow: React.FC = () => {
     paddleX.current = 150;
     setGameOver(false);
     setVictory(false);
-    setGameStarted(false); 
+    setGameStarted(false);
   };
 
   useEffect(() => {
-    if (!gameStarted) return; 
+    if (!gameStarted) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     const draw = () => {
@@ -56,9 +56,9 @@ export const PinballWindow: React.FC = () => {
 
       blocks.current.forEach((block) => {
         if (block.alive) {
-          ctx.fillStyle = "#0078d7";
+          ctx.fillStyle = '#0078d7';
           ctx.fillRect(block.x, block.y, BLOCK_WIDTH, BLOCK_HEIGHT);
-          ctx.strokeStyle = "#000";
+          ctx.strokeStyle = '#000';
           ctx.strokeRect(block.x, block.y, BLOCK_WIDTH, BLOCK_HEIGHT);
         }
       });
@@ -66,16 +66,16 @@ export const PinballWindow: React.FC = () => {
       const b = ball.current;
       ctx.beginPath();
       ctx.arc(b.x, b.y, BALL_SIZE / 2, 0, Math.PI * 2);
-      ctx.fillStyle = "red";
+      ctx.fillStyle = 'red';
       ctx.fill();
       ctx.closePath();
 
-      ctx.fillStyle = "#555";
+      ctx.fillStyle = '#555';
       ctx.fillRect(
         paddleX.current,
         canvas.height - PADDLE_HEIGHT - 10,
         PADDLE_WIDTH,
-        PADDLE_HEIGHT,
+        PADDLE_HEIGHT
       );
 
       // eslint-disable-next-line prefer-const
@@ -88,14 +88,17 @@ export const PinballWindow: React.FC = () => {
       if (y + dy > canvas.height - PADDLE_HEIGHT - 10 - BALL_SIZE / 2) {
         const paddleLeft = paddleX.current - BALL_SIZE / 2;
         const paddleRight = paddleX.current + PADDLE_WIDTH + BALL_SIZE / 2;
+
         if (x > paddleLeft && x < paddleRight) {
           dy = -dy;
           const hitPos = (x - paddleX.current) / PADDLE_WIDTH;
           dx = 4 * (hitPos - 0.5);
-        } else {
-          setGameOver(true);
-          return;
         }
+      }
+
+      if (y > canvas.height + 40) {
+        setGameOver(true);
+        return;
       }
 
       let allDead = true;
@@ -149,37 +152,38 @@ export const PinballWindow: React.FC = () => {
     paddleX.current = x;
 
     if (canvasRef.current) {
-      canvasRef.current.style.cursor = "none";
+      canvasRef.current.style.cursor = 'none';
     }
   };
 
   return (
-    <div style={{ padding: 10, position: "relative", textAlign: "center" }}>
+    <div style={{ padding: 10, position: 'relative', textAlign: 'center' }}>
       {!gameStarted && (
         <div
           style={{
-            width: "100%",
-            height: "400px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            border: "2px solid #555",
-            margin: "0 auto",
-            userSelect: "none",
+            width: '100%',
+            height: '400px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+            margin: '0 auto',
+            userSelect: 'none',
           }}
         >
           <h1>🕹 Pinball Game 🕹</h1>
           <button
             onClick={() => setGameStarted(true)}
             style={{
-              fontSize: 24,
-              padding: "10px 20px",
-              cursor: "pointer",
-              borderRadius: 6,
-              border: "2px solid #555",
-              backgroundColor: "#f0f0f0",
-              boxShadow: "0 2px 4px rgba(0,0,0,0.3)",
+              background: 'var(--win-silver)',
+              border: 'none',
+              boxShadow: 'var(--border-raised)',
+              textAlign: 'center',
+              width: '90px',
+              height: '40px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              marginTop: '30px',
             }}
           >
             Start Game
@@ -193,42 +197,46 @@ export const PinballWindow: React.FC = () => {
             <button
               onClick={restartGame}
               style={{
-                fontSize: 24,
-                padding: "5px 12px",
-                cursor: "pointer",
-                borderRadius: 6,
-                border: "2px solid #555",
-                backgroundColor: "#f0f0f0",
-                boxShadow: "0 2px 4px rgba(0,0,0,0.3)",
-                userSelect: "none",
+                background: 'var(--win-silver)',
+                border: 'none',
+                boxShadow: 'var(--border-raised)',
+                textAlign: 'center',
+                width: '40px',
+                height: '40px',
+                marginLeft: 'auto',
+                marginRight: 'auto',
               }}
             >
               🕹
             </button>
           </div>
 
-          {gameOver && (
-            <div style={{ color: "red", textAlign: "center" }}>
-              💥 Game Over!
-            </div>
-          )}
-          {victory && (
-            <div style={{ color: "green", textAlign: "center" }}>
-              🏆 Victory!
-            </div>
-          )}
-
           <canvas
             ref={canvasRef}
             width={COLS * (BLOCK_WIDTH + 5) + 40}
             height={400}
             style={{
-              border: "2px solid #555",
-              display: "block",
-              margin: "0 auto",
+              border: '2px solid #555',
+              display: 'block',
+              margin: '0 auto',
             }}
             onMouseMove={handleMouseMove}
           />
+
+          {gameOver && (
+            <div
+              style={{ color: 'red', textAlign: 'center', marginTop: '20px' }}
+            >
+              💥 Game Over!
+            </div>
+          )}
+          {victory && (
+            <div
+              style={{ color: 'green', textAlign: 'center', marginTop: '20px' }}
+            >
+              🏆 Victory!
+            </div>
+          )}
         </>
       )}
     </div>

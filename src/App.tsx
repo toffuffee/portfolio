@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import type { DesktopIcon } from './types/types';
-import { ProjectsWindow } from './components/projects-window/Projectswindow';
-import { AboutWindow } from './components/about-window/Aboutwindow';
+import { ProjectsWindow } from './components/projects-window/ProjectsWindow';
+import { AboutWindow } from './components/about-window/AboutWindow';
 import { Window } from './components/window/Window';
 import { Taskbar } from './components/taskbar/Taskbar';
 import { StartMenu } from './components/start-menu/StartMenu';
