@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import type { WindowState } from "../../types/types";
+import React, { useState, useEffect } from 'react';
+import type { WindowState } from '../../types/types';
 
 interface Props {
   windows: WindowState[];
@@ -14,13 +14,13 @@ export const Taskbar: React.FC<Props> = ({
   onTaskClick,
   onStartClick,
 }) => {
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState('');
 
   useEffect(() => {
     const update = () => {
       const now = new Date();
       setTime(
-        now.toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" }),
+        now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })
       );
     };
     update();
@@ -31,14 +31,14 @@ export const Taskbar: React.FC<Props> = ({
   return (
     <div className="taskbar">
       <button className="start-btn" onClick={onStartClick}>
-        <b>Пуск</b>
+        <b>Start</b>
       </button>
       <div className="taskbar-divider" />
 
       {windows.map((w) => (
         <button
           key={w.id}
-          className={`taskbar-task ${activeId === w.id && !w.minimized ? "active" : ""}`}
+          className={`taskbar-task ${activeId === w.id && !w.minimized ? 'active' : ''}`}
           onClick={() => onTaskClick(w.id)}
           title={w.title}
         >

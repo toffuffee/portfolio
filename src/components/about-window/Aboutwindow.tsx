@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-const tabs = ["Личное", "Навыки", "Образование"];
+const tabs = ['Info', 'Skills', 'Study'];
 
 export const AboutWindow: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -8,9 +8,9 @@ export const AboutWindow: React.FC = () => {
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        height: "100%",
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
         padding: 8,
         gap: 4,
       }}
@@ -18,21 +18,19 @@ export const AboutWindow: React.FC = () => {
       {/* Properties header */}
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
+          display: 'flex',
+          alignItems: 'center',
           gap: 12,
-          padding: "8px 0 12px",
+          padding: '8px 0 12px',
         }}
       >
         <span style={{ fontSize: 48 }}>👤</span>
         <div>
-          <div style={{ fontSize: 16, fontWeight: "bold" }}>
-            Иван Разработчиков
+          <div style={{ fontSize: 16, fontWeight: 'bold' }}>Pavel Orlov</div>
+          <div style={{ fontSize: 11, color: '#444', marginTop: 2 }}>
+            Frontend Developer
           </div>
-          <div style={{ fontSize: 11, color: "#444", marginTop: 2 }}>
-            Full-Stack Developer
-          </div>
-          <div style={{ fontSize: 11, color: "#444" }}>v1.0.0 © 1998–2026</div>
+          <div style={{ fontSize: 11, color: '#444' }}>v5.3.8 © 2022–2026</div>
         </div>
       </div>
 
@@ -41,7 +39,7 @@ export const AboutWindow: React.FC = () => {
         {tabs.map((t, i) => (
           <div
             key={t}
-            className={`tab ${activeTab === i ? "active" : ""}`}
+            className={`tab ${activeTab === i ? 'active' : ''}`}
             onClick={() => setActiveTab(i)}
           >
             {t}
@@ -51,39 +49,38 @@ export const AboutWindow: React.FC = () => {
 
       <div className="tab-content" style={{ flex: 1 }}>
         {activeTab === 0 && (
-          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <div className="groupbox">
-              <span className="groupbox-title">Контакты</span>
+              <span className="groupbox-title">Contacts</span>
               <table
                 style={{
-                  width: "100%",
+                  width: '100%',
                   fontSize: 11,
-                  borderCollapse: "collapse",
+                  borderCollapse: 'collapse',
                 }}
               >
                 <tbody>
                   {[
-                    ["📧 Email", "ivan@example.com"],
-                    ["🐙 GitHub", "github.com/ivan"],
-                    ["💼 LinkedIn", "linkedin.com/in/ivan"],
-                    ["🌍 Город", "Москва, Россия"],
+                    ['📧 Email', 'jim.jimer.2003@gmail.com'],
+                    ['🐙 GitHub', 'github.com/toffuffee'],
+                    ['🌍 City', 'Kursk, Russia'],
                   ].map(([k, v]) => (
                     <tr key={k}>
                       <td
                         style={{
-                          padding: "3px 8px 3px 0",
-                          whiteSpace: "nowrap",
-                          color: "#444",
+                          padding: '3px 8px 3px 0',
+                          whiteSpace: 'nowrap',
+                          color: '#444',
                         }}
                       >
                         {k}
                       </td>
                       <td
                         style={{
-                          padding: "3px 0",
-                          color: "#0000cc",
-                          textDecoration: "underline",
-                          cursor: "pointer",
+                          padding: '3px 0',
+                          color: '#0000cc',
+                          textDecoration: 'underline',
+                          cursor: 'pointer',
                         }}
                       >
                         {v}
@@ -95,41 +92,96 @@ export const AboutWindow: React.FC = () => {
             </div>
 
             <div className="groupbox">
-              <span className="groupbox-title">О себе</span>
+              <span className="groupbox-title">About</span>
               <p style={{ fontSize: 11, lineHeight: 1.6, marginTop: 4 }}>
-                Привет! Я Full-Stack разработчик с 5+ летним опытом создания
-                веб-приложений. Люблю чистый код, нестандартные UI-решения и
-                ностальгию по Windows 98. В свободное время пишу на Rust и играю
-                в Quake III.
+                Hi! I'm a frontend developer with 4+ years of experience
+                creating web applications. I love clean code, unique UI
+                solutions, and a fondness for Windows 98. In my free time, I
+                play Heroes of Might and Magic III.
               </p>
+            </div>
+
+            <div className="groupbox">
+              <span className="groupbox-title">Work</span>
+              {[
+                {
+                  year: '2021–2023',
+                  title: 'ERP Smart',
+                  sub: 'Odoo developer',
+                  icon: '🖥️',
+                },
+                {
+                  year: '2023–2024',
+                  title:
+                    'Ivannikov Institute for System Programming of the Russian Academy of Sciences',
+                  sub: 'Frontend developer',
+                  icon: '🖥️',
+                },
+                {
+                  year: '2024-now',
+                  title: 'Tronic Asia Group',
+                  sub: 'Frontend developer',
+                  icon: '🖥️',
+                },
+              ].map((item) => (
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: 8,
+                    marginTop: 10,
+                  }}
+                >
+                  <span style={{ fontSize: 20 }}>{item.icon}</span>
+                  <div>
+                    <div style={{ fontWeight: 'bold', fontSize: 11 }}>
+                      {item.title}
+                    </div>
+                    <div style={{ fontSize: 11, color: '#444' }}>
+                      {item.sub}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 9,
+                        color: '#444',
+                        fontStyle: 'italic',
+                      }}
+                    >
+                      {item.year}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}
 
         {activeTab === 1 && (
-          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {[
-              { label: "TypeScript / JavaScript", value: 95 },
-              { label: "React / Next.js", value: 90 },
-              { label: "Node.js / Express", value: 85 },
-              { label: "Python / FastAPI", value: 75 },
-              { label: "PostgreSQL / Redis", value: 80 },
-              { label: "Docker / Kubernetes", value: 70 },
-              { label: "Rust", value: 45 },
+              { label: 'TypeScript / JavaScript', value: 95 },
+              { label: 'React', value: 86 },
+              { label: 'Vue', value: 63 },
+              { label: 'Svelte', value: 57 },
+              { label: 'Python / FastAPI / Django / Flask', value: 55 },
+              { label: 'PostgreSQL', value: 47 },
+              { label: 'C#', value: 36 },
+              { label: 'Asterisk', value: 26 },
+              { label: 'LISP', value: 15 },
             ].map((skill) => (
               <div
                 key={skill.label}
-                style={{ display: "flex", flexDirection: "column", gap: 2 }}
+                style={{ display: 'flex', flexDirection: 'column', gap: 2 }}
               >
                 <div
                   style={{
-                    display: "flex",
-                    justifyContent: "space-between",
+                    display: 'flex',
+                    justifyContent: 'space-between',
                     fontSize: 11,
                   }}
                 >
                   <span>{skill.label}</span>
-                  <span style={{ color: "#444" }}>{skill.value}%</span>
+                  <span style={{ color: '#444' }}>{skill.value}%</span>
                 </div>
                 <div className="progress-bar">
                   <div
@@ -143,31 +195,25 @@ export const AboutWindow: React.FC = () => {
         )}
 
         {activeTab === 2 && (
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {[
               {
-                year: "2015–2019",
-                title: "Бакалавр, МГТУ им. Баумана",
-                sub: "Информатика и вычислительная техника",
-                icon: "🎓",
+                year: '2019',
+                title: 'WorldSkills',
+                sub: 'Participant',
+                icon: '📜',
               },
               {
-                year: "2019–2021",
-                title: "Магистр, ВШЭ",
-                sub: "Программная инженерия",
-                icon: "🎓",
+                year: '2021–2025',
+                title: "Bachelor's degree, Southwestern State University.",
+                sub: 'Software Engineering',
+                icon: '🎓',
               },
               {
-                year: "2021",
-                title: "AWS Certified Developer",
-                sub: "Amazon Web Services",
-                icon: "📜",
-              },
-              {
-                year: "2023",
-                title: "CKA — Certified Kubernetes Administrator",
-                sub: "Cloud Native Computing Foundation",
-                icon: "📜",
+                year: '2025–2027',
+                title: "Master's degree, South-West State University",
+                sub: 'Software Engineering',
+                icon: '🎓',
               },
             ].map((item) => (
               <div
@@ -178,18 +224,18 @@ export const AboutWindow: React.FC = () => {
                 <span className="groupbox-title">{item.year}</span>
                 <div
                   style={{
-                    display: "flex",
-                    alignItems: "flex-start",
+                    display: 'flex',
+                    alignItems: 'flex-start',
                     gap: 8,
                     marginTop: 4,
                   }}
                 >
                   <span style={{ fontSize: 20 }}>{item.icon}</span>
                   <div>
-                    <div style={{ fontWeight: "bold", fontSize: 11 }}>
+                    <div style={{ fontWeight: 'bold', fontSize: 11 }}>
                       {item.title}
                     </div>
-                    <div style={{ fontSize: 11, color: "#444" }}>
+                    <div style={{ fontSize: 11, color: '#444' }}>
                       {item.sub}
                     </div>
                   </div>

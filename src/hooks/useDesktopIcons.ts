@@ -1,5 +1,5 @@
-import { useState } from "react";
-import type { DesktopIcon, Point } from "../types/types";
+import { useState } from 'react';
+import type { DesktopIcon, Point } from '../types/types';
 
 const GRID_SIZE = 80;
 const ICON_SIZE = 60;
@@ -11,7 +11,7 @@ export function useDesktopIcons(initialIcons: DesktopIcon[]) {
       ...icon,
       x: snapToGrid(20),
       y: snapToGrid(20 + i * GRID_SIZE),
-    })),
+    }))
   );
   const [draggingIcon, setDraggingIcon] = useState<string | null>(null);
   const [dragStartPositions, setDragStartPositions] = useState<
@@ -48,9 +48,23 @@ export function useDesktopIcons(initialIcons: DesktopIcon[]) {
 
   const onMouseMove = (e: React.MouseEvent) => {
     if (!draggingIcon || !dragStartMouse) return;
-    const dx = e.clientX - dragStartMouse.x;
-    const dy = e.clientY - dragStartMouse.y;
+    const rawDx = e.clientX - dragStartMouse.x;
+    const rawDy = e.clientY - dragStartMouse.y;
     const desktopHeight = window.innerHeight - 40;
+
+    let clampedDx = rawDx;
+    let clampedDy = rawDy;
+    for (const [id, start] of Object.entries(dragStartPositions)) {
+      if (!selectedIcons.has(id)) continue;
+      clampedDx = Math.max(
+        -start.x,
+        Math.min(clampedDx, window.innerWidth - ICON_SIZE - start.x)
+      );
+      clampedDy = Math.max(
+        -start.y,
+        Math.min(clampedDy, desktopHeight - ICON_SIZE - start.y)
+      );
+    }
 
     setIcons((prev) =>
       prev.map((icon) => {
@@ -59,10 +73,10 @@ export function useDesktopIcons(initialIcons: DesktopIcon[]) {
         if (!start) return icon;
         return {
           ...icon,
-          x: Math.max(0, Math.min(start.x + dx, window.innerWidth - ICON_SIZE)),
-          y: Math.max(0, Math.min(start.y + dy, desktopHeight - ICON_SIZE)),
+          x: start.x + clampedDx,
+          y: start.y + clampedDy,
         };
-      }),
+      })
     );
   };
 
@@ -83,10 +97,10 @@ export function useDesktopIcons(initialIcons: DesktopIcon[]) {
         for (const icon of prev) {
           if (selectedIcons.has(icon.id)) {
             let x = snapToGrid(
-              Math.min(Math.max(icon.x, 0), window.innerWidth - ICON_SIZE),
+              Math.min(Math.max(icon.x, 0), window.innerWidth - ICON_SIZE)
             );
             let y = snapToGrid(
-              Math.min(Math.max(icon.y, 0), desktopHeight - ICON_SIZE),
+              Math.min(Math.max(icon.y, 0), desktopHeight - ICON_SIZE)
             );
 
             while (occupiedPositions.has(`${x},${y}`)) {
@@ -111,7 +125,7 @@ export function useDesktopIcons(initialIcons: DesktopIcon[]) {
   };
 
   const onMouseDownDesktop = (e: React.MouseEvent) => {
-    if (!(e.target as HTMLElement).classList.contains("desktop-icon")) {
+    if (!(e.target as HTMLElement).classList.contains('desktop-icon')) {
       setSelectedIcons(new Set());
       setSelection({ x: e.clientX, y: e.clientY, w: 0, h: 0 });
     }
@@ -140,10 +154,10 @@ export function useDesktopIcons(initialIcons: DesktopIcon[]) {
                 icon.x > selX + selW ||
                 icon.y + ICON_SIZE < selY ||
                 icon.y > selY + selH
-              ),
+              )
           )
-          .map((i) => i.id),
-      ),
+          .map((i) => i.id)
+      )
     );
   };
 
