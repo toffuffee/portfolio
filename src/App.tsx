@@ -9,14 +9,12 @@ import { StartMenu } from './components/start-menu/StartMenu';
 import { useWindows } from './hooks/useWindows';
 import { useDesktopIcons } from './hooks/useDesktopIcons';
 import { MinesweeperWindow } from './components/minesweeper-window/MinesweeperWindow';
-import { PinballWindow } from './components/pinball/PinballWindow';
 import { BootScreen } from './components/boot-screen/BootScreen';
 
 const COMPONENTS: Record<string, React.FC> = {
   projects: ProjectsWindow,
   about: AboutWindow,
   minesweeper: MinesweeperWindow,
-  pinball: PinballWindow,
 };
 
 const initialIcons: DesktopIcon[] = [
@@ -44,15 +42,6 @@ const initialIcons: DesktopIcon[] = [
     icon: '💣',
     component: 'minesweeper',
     defaultSize: { width: 350, height: 400 },
-    x: 0,
-    y: 0,
-  },
-  {
-    id: 'pinball',
-    label: 'Pinball',
-    icon: '🕹',
-    component: 'pinball',
-    defaultSize: { width: 800, height: 550 },
     x: 0,
     y: 0,
   },
