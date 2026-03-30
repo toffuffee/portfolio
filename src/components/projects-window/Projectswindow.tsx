@@ -3,58 +3,74 @@ import React, { useState } from 'react';
 const projects = [
   {
     id: 1,
-    name: 'CRM System Pro',
-    icon: '📊',
-    tech: ['React', 'Node.js', 'PostgreSQL'],
-    year: '2024',
-    desc: 'Корпоративная CRM-система для управления клиентами и сделками. Поддерживает 50,000+ записей, имеет аналитику в реальном времени, интеграцию с email и экспорт в Excel.',
-    link: 'github.com/ivan/crm-pro',
-    size: '142 KB',
-    modified: '15.03.2024',
+    name: 'Infrastructure Mail',
+    icon: '✉️',
+    tech: [
+      'React',
+      'TypeScript',
+      'MUI',
+      'Apache James',
+      'JMAP',
+      'OpenSearch',
+      'Sieve',
+    ],
+    year: '2026',
+    desc: 'Modern mail service built on Apache James and JMAP, featuring fast full-text search with OpenSearch, flexible email filtering via Sieve, and a clean, responsive UI powered by React and MUI.',
+    size: '342 KB',
   },
   {
     id: 2,
-    name: 'ChatBot Platform',
-    icon: '🤖',
-    tech: ['Python', 'FastAPI', 'Redis'],
-    year: '2023',
-    desc: 'Платформа для создания и деплоя чат-ботов с поддержкой GPT-4. Webhooks, аналитика диалогов, визуальный конструктор сценариев.',
-    link: 'github.com/ivan/chatbot-platform',
-    size: '89 KB',
-    modified: '07.12.2023',
+    name: 'Infrastructure Admin panel',
+    icon: '🔒',
+    tech: ['React', 'TypeScript', 'MUI'],
+    year: '2026',
+    desc: 'Administrative panel for managing infrastructure services, built with React and TypeScript. Provides a clean, responsive interface using MUI for monitoring, configuration, and control of system components.',
+    size: '271 KB',
   },
   {
     id: 3,
-    name: 'DevOps Dashboard',
-    icon: '🚀',
-    tech: ['Next.js', 'Kubernetes', 'Grafana'],
-    year: '2023',
-    desc: 'Дашборд для мониторинга k8s-кластеров. Метрики, логи, алерты. Интеграция с Prometheus, Loki и PagerDuty.',
-    link: 'github.com/ivan/devops-dash',
-    size: '67 KB',
-    modified: '22.08.2023',
+    name: 'Infrastructure Settings service',
+    icon: '⚙️',
+    tech: ['React', 'TypeScript', 'MUI'],
+    year: '2026',
+    desc: 'Centralized settings service for managing account preferences and infrastructure-wide theming. Built with React and TypeScript, it provides a unified interface for configuring user settings and customizing the look and feel across the entire platform.',
+    size: '243 KB',
   },
   {
     id: 4,
-    name: 'E-Commerce Engine',
-    icon: '🛒',
-    tech: ['TypeScript', 'Nest.js', 'MySQL'],
-    year: '2022',
-    desc: 'Движок интернет-магазина с корзиной, оплатой через Stripe, управлением инвентарем и генерацией накладных.',
-    link: 'github.com/ivan/ecom-engine',
-    size: '210 KB',
-    modified: '01.04.2022',
+    name: 'Portal Tronic',
+    icon: '🖥️',
+    tech: ['React', 'TypeScript', 'MUI'],
+    year: '2025',
+    desc: 'Portal for purchasing, configuring, and deploying infrastructure services. Built with React and TypeScript, it provides a streamlined interface for managing the full lifecycle—from setup to launch—within a single platform.',
+    size: '214 KB',
   },
   {
     id: 5,
-    name: 'Markdown Blog',
+    name: 'Mail text editor',
     icon: '📝',
-    tech: ['Astro', 'Tailwind', 'Cloudflare'],
+    tech: ['React', 'TypeScript', 'execCommand API', 'Shadow DOM'],
+    year: '2025',
+    desc: 'Lightweight rich text editor for composing emails, built with React and TypeScript. Uses the execCommand API and Shadow DOM to provide isolated styling and a smooth writing experience.',
+    size: '12 KB',
+  },
+  {
+    id: 6,
+    name: 'CDEK Odoo module',
+    icon: '🛒',
+    tech: ['Python', 'Odoo', 'MySQL', 'CDEK API'],
     year: '2022',
-    desc: 'Статичный блог на Astro с CMS-редактором на основе Markdown. Lighthouse 100/100. CDN-деплой, RSS-фид.',
-    link: 'github.com/ivan/md-blog',
-    size: '34 KB',
-    modified: '18.11.2022',
+    desc: 'Odoo module integrating CDEK delivery services, built with Python. Enables automated shipping calculations, order tracking, and seamless interaction with the CDEK API within the Odoo ecosystem.',
+    size: '185 KB',
+  },
+  {
+    id: 7,
+    name: 'Caravans website',
+    icon: '🛤️',
+    tech: ['Owl', 'JavaScript', 'Python', 'Odoo', 'MySQL'],
+    year: '2022',
+    desc: 'Community-driven website for caravan enthusiasts, featuring trip planning, excursions, thematic forums, and a shared knowledge base. Built with Odoo and Owl, it provides a platform for travelers to connect, share experiences, and organize journeys.',
+    size: '244 KB',
   },
 ];
 
@@ -82,7 +98,7 @@ export const ProjectsWindow: React.FC = () => {
           disabled={!selected}
           onClick={() => selected && setView('detail')}
         >
-          📄 Детали
+          📄 Details
         </button>
         {view === 'detail' && (
           <button
@@ -90,7 +106,7 @@ export const ProjectsWindow: React.FC = () => {
             style={{ minWidth: 60, fontSize: 11 }}
             onClick={() => setView('list')}
           >
-            ← Назад
+            ← Back
           </button>
         )}
       </div>
@@ -106,7 +122,7 @@ export const ProjectsWindow: React.FC = () => {
         }}
       >
         <span style={{ fontSize: 11, color: '#444', whiteSpace: 'nowrap' }}>
-          Адрес:
+          Path:
         </span>
         <div className="input98" style={{ flex: 1 }}>
           C:\Portfolio\Projects
@@ -122,13 +138,13 @@ export const ProjectsWindow: React.FC = () => {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: '2fr 1fr 1fr 1fr',
+              gridTemplateColumns: '2fr 2fr 1fr 1fr',
               fontSize: 11,
               padding: '2px 6px',
               background: '#c0c0c0',
             }}
           >
-            {['Имя', 'Технологии', 'Год', 'Размер'].map((h) => (
+            {['Name', 'Technologies', 'Year', 'Size'].map((h) => (
               <div
                 key={h}
                 style={{
@@ -155,13 +171,28 @@ export const ProjectsWindow: React.FC = () => {
                 }}
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: '2fr 1fr 1fr 1fr',
+                  gridTemplateColumns: '2fr 2fr 1fr 1fr',
                   fontSize: 11,
                   padding: '3px 6px',
                 }}
               >
-                <span>
-                  <span style={{ marginRight: 6, fontSize: 14 }}>{p.icon}</span>
+                <span
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: 14,
+                      display: 'block',
+                      width: '19px',
+                      height: '19px',
+                    }}
+                  >
+                    {p.icon}
+                  </span>
                   {p.name}
                 </span>
                 <span style={{ fontSize: 10 }}>{p.tech.join(', ')}</span>
@@ -173,10 +204,10 @@ export const ProjectsWindow: React.FC = () => {
 
           {/* Status bar */}
           <div className="statusbar">
-            <div className="statusbar-pane">{projects.length} объект(ов)</div>
+            <div className="statusbar-pane">{projects.length} object(-s)</div>
             <div className="statusbar-pane">
               {selected
-                ? `Выбран: ${projects.find((p) => p.id === selected)?.name}`
+                ? `Selected: ${projects.find((p) => p.id === selected)?.name}`
                 : ''}
             </div>
           </div>
@@ -195,25 +226,20 @@ export const ProjectsWindow: React.FC = () => {
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
               <span style={{ fontSize: 48 }}>{selectedProject.icon}</span>
-              <div>
-                <div style={{ fontSize: 16, fontWeight: 'bold' }}>
-                  {selectedProject.name}
-                </div>
-                <div style={{ fontSize: 11, color: '#444' }}>
-                  Изменён: {selectedProject.modified}
-                </div>
+              <div style={{ fontSize: 16, fontWeight: 'bold' }}>
+                {selectedProject.name}
               </div>
             </div>
 
-            <div className="groupbox" style={{ marginTop: 0 }}>
-              <span className="groupbox-title">Описание</span>
+            <div className="groupbox" style={{ marginTop: 10 }}>
+              <span className="groupbox-title">Description</span>
               <p style={{ fontSize: 11, lineHeight: 1.7, marginTop: 4 }}>
                 {selectedProject.desc}
               </p>
             </div>
 
-            <div className="groupbox" style={{ marginTop: 0 }}>
-              <span className="groupbox-title">Технологии</span>
+            <div className="groupbox" style={{ marginTop: 10 }}>
+              <span className="groupbox-title">Technologies</span>
               <div
                 style={{
                   display: 'flex',

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 type Cell = {
   hasMine: boolean;
@@ -22,7 +22,7 @@ export const MinesweeperWindow: React.FC = () => {
         revealed: false,
         flagged: false,
         adjacentMines: 0,
-      })),
+      }))
     );
 
     let minesPlaced = 0;
@@ -87,7 +87,7 @@ export const MinesweeperWindow: React.FC = () => {
       newGrid.forEach((row) =>
         row.forEach((cell) => {
           if (cell.hasMine) cell.revealed = true;
-        }),
+        })
       );
     } else {
       dfs(r, c);
@@ -101,7 +101,7 @@ export const MinesweeperWindow: React.FC = () => {
       newGrid.forEach((row) =>
         row.forEach((cell) => {
           if (cell.hasMine) cell.revealed = true;
-        }),
+        })
       );
     }
 
@@ -124,19 +124,19 @@ export const MinesweeperWindow: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: 10, position: "relative" }}>
+    <div style={{ padding: 10, position: 'relative' }}>
       <div
         className="window-btn"
         style={{
-          textAlign: "center",
-          width: "40px",
-          height: "40px",
-          marginLeft: "auto",
-          marginRight: "auto",
+          textAlign: 'center',
+          width: '40px',
+          height: '40px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
         }}
       >
         <span
-          style={{ fontSize: 24, cursor: "pointer", userSelect: "none" }}
+          style={{ fontSize: 24, cursor: 'pointer', userSelect: 'none' }}
           onClick={restartGame}
           role="button"
           aria-label="Restart Game"
@@ -147,11 +147,11 @@ export const MinesweeperWindow: React.FC = () => {
 
       <div
         style={{
-          display: "grid",
+          display: 'grid',
           gridTemplateColumns: `repeat(${COLS}, 30px)`,
           gap: 2,
           marginTop: 10,
-          justifyContent: "center",
+          justifyContent: 'center',
         }}
       >
         {grid.map((row, r) =>
@@ -163,34 +163,34 @@ export const MinesweeperWindow: React.FC = () => {
               style={{
                 width: 30,
                 height: 30,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                background: cell.revealed ? "#ddd" : "#999",
-                border: "1px solid #555",
-                cursor: "pointer",
-                userSelect: "none",
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                background: cell.revealed ? '#ddd' : '#999',
+                border: '1px solid #555',
+                cursor: 'pointer',
+                userSelect: 'none',
               }}
             >
               {cell.revealed
                 ? cell.hasMine
-                  ? "💣"
-                  : cell.adjacentMines || ""
+                  ? '💣'
+                  : cell.adjacentMines || ''
                 : cell.flagged
-                  ? "🚩"
-                  : ""}
+                  ? '🚩'
+                  : ''}
             </div>
-          )),
+          ))
         )}
       </div>
       {gameOver && (
-        <div style={{ color: "red", textAlign: "center", marginTop: "20px" }}>
-          💥 Поражение!
+        <div style={{ color: 'red', textAlign: 'center', marginTop: '20px' }}>
+          💥 Defeat!
         </div>
       )}
       {victory && (
-        <div style={{ color: "green", textAlign: "center", marginTop: "20px" }}>
-          🏆 Победа!
+        <div style={{ color: 'green', textAlign: 'center', marginTop: '20px' }}>
+          🏆 Win!
         </div>
       )}
     </div>

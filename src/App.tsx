@@ -123,7 +123,9 @@ export default function App() {
               left: icon.x,
               top: icon.y,
               cursor: 'pointer',
-              border: selectedIcons.has(icon.id) ? '1px solid #0078d7' : 'none',
+              border: selectedIcons.has(icon.id)
+                ? '1px solid #0078d7'
+                : '1px solid #00000000',
               background: selectedIcons.has(icon.id)
                 ? 'rgba(0,120,215,0.2)'
                 : 'transparent',

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 *,
 *::before,
@@ -53,7 +53,7 @@ body {
 }
 
 body {
-  font-family: "MS Sans Serif", "Microsoft Sans Serif", Arial, sans-serif;
+  font-family: 'MS Sans Serif', 'Microsoft Sans Serif', Arial, sans-serif;
   font-size: 11px;
   background-color: var(--win-bg);
   color: var(--win-black);
@@ -115,6 +115,7 @@ body {
   position: absolute;
   background: var(--win-silver);
   box-shadow: var(--border-window);
+  border: 1px solid var(--win-border-dark);
   display: flex;
   flex-direction: column;
   min-width: 200px;
@@ -163,7 +164,7 @@ body {
   font-size: 9px;
   font-weight: bold;
   padding: 0;
-  font-family: "Marlett", "Wingdings", sans-serif;
+  font-family: 'Marlett', 'Wingdings', sans-serif;
 }
 
 .window-btn:active {
@@ -256,10 +257,10 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-image: url("https://upload.wikimedia.org/wikipedia/ru/1/1d/%D0%91%D0%B5%D0%B7%D0%BC%D1%8F%D1%82%D0%B5%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D1%8C.png");
+  background-image: url('https://upload.wikimedia.org/wikipedia/ru/1/1d/%D0%91%D0%B5%D0%B7%D0%BC%D1%8F%D1%82%D0%B5%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D1%8C.png');
   background-size: cover;
   background-position: center;
-  font-family: "MS Sans Serif", sans-serif;
+  font-family: 'MS Sans Serif', sans-serif;
 }
 
 /* Desktop icon */
