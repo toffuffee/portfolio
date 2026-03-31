@@ -10,11 +10,13 @@ import { useWindows } from './hooks/useWindows';
 import { useDesktopIcons } from './hooks/useDesktopIcons';
 import { MinesweeperWindow } from './components/minesweeper-window/MinesweeperWindow';
 import { BootScreen } from './components/boot-screen/BootScreen';
+import { DoomWindow } from './components/doom-window/DoomWindow';
 
 const COMPONENTS: Record<string, React.FC> = {
   projects: ProjectsWindow,
   about: AboutWindow,
   minesweeper: MinesweeperWindow,
+  doom: DoomWindow,
 };
 
 const initialIcons: DesktopIcon[] = [
@@ -42,6 +44,15 @@ const initialIcons: DesktopIcon[] = [
     icon: '💣',
     component: 'minesweeper',
     defaultSize: { width: 350, height: 400 },
+    x: 0,
+    y: 0,
+  },
+  {
+    id: 'doom',
+    label: 'DOOM',
+    icon: '👹',
+    component: 'doom',
+    defaultSize: { width: 800, height: 560 },
     x: 0,
     y: 0,
   },
