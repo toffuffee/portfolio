@@ -23,9 +23,6 @@ const COMPONENTS: Record<string, React.FC> = {
     <DosGameWindow bundleUrl="/games/earthworm/earthworm.jsdos" />
   ),
   ultima: () => <DosGameWindow bundleUrl="/games/ultima/ultima.jsdos" />,
-  teenagent: () => (
-    <DosGameWindow bundleUrl="/games/teenagent/teenagent.jsdos" />
-  ),
 };
 
 const initialIcons: DesktopIcon[] = [
@@ -88,15 +85,6 @@ const initialIcons: DesktopIcon[] = [
     label: 'Ultima Underworld',
     icon: '⚔️',
     component: 'ultima',
-    defaultSize: { width: 800, height: 560 },
-    x: 0,
-    y: 0,
-  },
-  {
-    id: 'teenagent',
-    label: 'Teenagent',
-    icon: '🕺',
-    component: 'teenagent',
     defaultSize: { width: 800, height: 560 },
     x: 0,
     y: 0,
