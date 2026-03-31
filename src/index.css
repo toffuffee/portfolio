@@ -152,8 +152,8 @@ body {
 }
 
 .window-btn {
-  width: 16px;
-  height: 14px;
+  width: 17px;
+  height: 17px;
   background: var(--win-silver);
   border: none;
   box-shadow: var(--border-raised);

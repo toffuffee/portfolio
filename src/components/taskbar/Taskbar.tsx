@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { WindowState } from '../../types/types';
+import { renderIcon } from '../../utils/renderIcon';
 
 interface Props {
   windows: WindowState[];
@@ -42,7 +43,7 @@ export const Taskbar: React.FC<Props> = ({
           onClick={() => onTaskClick(w.id)}
           title={w.title}
         >
-          <span style={{ fontSize: 13 }}>{w.icon}</span>
+          <span style={{ fontSize: 13 }}>{renderIcon(w.icon, 16)}</span>
           {w.title}
         </button>
       ))}

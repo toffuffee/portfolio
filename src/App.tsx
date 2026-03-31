@@ -10,13 +10,22 @@ import { useWindows } from './hooks/useWindows';
 import { useDesktopIcons } from './hooks/useDesktopIcons';
 import { MinesweeperWindow } from './components/minesweeper-window/MinesweeperWindow';
 import { BootScreen } from './components/boot-screen/BootScreen';
-import { DoomWindow } from './components/doom-window/DoomWindow';
+import { DosGameWindow } from './components/dos-game-window/DosGameWindow';
+import { renderIcon } from './utils/renderIcon';
 
 const COMPONENTS: Record<string, React.FC> = {
   projects: ProjectsWindow,
   about: AboutWindow,
   minesweeper: MinesweeperWindow,
-  doom: DoomWindow,
+  doom: () => <DosGameWindow bundleUrl="/games/doom/doom.jsdos" />,
+  keen: () => <DosGameWindow bundleUrl="/games/keen/keen.jsdos" />,
+  earthworm: () => (
+    <DosGameWindow bundleUrl="/games/earthworm/earthworm.jsdos" />
+  ),
+  ultima: () => <DosGameWindow bundleUrl="/games/ultima/ultima.jsdos" />,
+  teenagent: () => (
+    <DosGameWindow bundleUrl="/games/teenagent/teenagent.jsdos" />
+  ),
 };
 
 const initialIcons: DesktopIcon[] = [
@@ -50,8 +59,44 @@ const initialIcons: DesktopIcon[] = [
   {
     id: 'doom',
     label: 'DOOM',
-    icon: '👹',
+    icon: '/icons/Doom.png',
     component: 'doom',
+    defaultSize: { width: 800, height: 560 },
+    x: 0,
+    y: 0,
+  },
+  {
+    id: 'keen',
+    label: 'Commander Keen',
+    icon: '/icons/Keen4.ico',
+    component: 'keen',
+    defaultSize: { width: 800, height: 560 },
+    x: 0,
+    y: 0,
+  },
+  {
+    id: 'earthworm',
+    label: 'Earthworm Jim',
+    icon: '/icons/Earthworm.png',
+    component: 'earthworm',
+    defaultSize: { width: 800, height: 560 },
+    x: 0,
+    y: 0,
+  },
+  {
+    id: 'ultima',
+    label: 'Ultima Underworld',
+    icon: '⚔️',
+    component: 'ultima',
+    defaultSize: { width: 800, height: 560 },
+    x: 0,
+    y: 0,
+  },
+  {
+    id: 'teenagent',
+    label: 'Teenagent',
+    icon: '🕺',
+    component: 'teenagent',
     defaultSize: { width: 800, height: 560 },
     x: 0,
     y: 0,
@@ -141,7 +186,10 @@ export default function App() {
               });
             }}
           >
-            <div className="icon-img">{icon.icon}</div>
+            <div className="icon-img" style={{ pointerEvents: 'none' }}>
+              {renderIcon(icon.icon, 32)}
+            </div>
+
             <div className="icon-label">{icon.label}</div>
           </div>
         ))}

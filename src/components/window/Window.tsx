@@ -1,5 +1,6 @@
 import React, { useRef, useCallback, useEffect } from "react";
 import type { WindowState } from "../../types/types";
+import { renderIcon } from "../../utils/renderIcon";
 
 interface Props {
   win: WindowState;
@@ -148,7 +149,7 @@ export const Window: React.FC<Props> = ({
         onDoubleClick={() => onMaximize(win.id)}
       >
         <div className="window-title">
-          <span style={{ fontSize: 16 }}>{win.icon}</span>
+          <span style={{ fontSize: 16 }}>{renderIcon(win.icon, 16)}</span>
           {win.title}
         </div>
         <div className="window-controls">
