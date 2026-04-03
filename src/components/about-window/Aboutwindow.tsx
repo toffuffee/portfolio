@@ -30,7 +30,7 @@ export const AboutWindow: React.FC = () => {
           <div style={{ fontSize: 11, color: '#444', marginTop: 2 }}>
             Frontend Developer
           </div>
-          <div style={{ fontSize: 11, color: '#444' }}>v5.3.8 © 2022–2026</div>
+          <div style={{ fontSize: 11, color: '#444' }}>v5.3.8 © 2021–2026</div>
         </div>
       </div>
 

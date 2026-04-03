@@ -68,7 +68,7 @@ const projects = [
     name: 'Caravans website',
     icon: '🛤️',
     tech: ['Owl', 'JavaScript', 'Python', 'Odoo', 'MySQL'],
-    year: '2022',
+    year: '2021',
     desc: 'Community-driven website for caravan enthusiasts, featuring trip planning, excursions, thematic forums, and a shared knowledge base. Built with Odoo and Owl, it provides a platform for travelers to connect, share experiences, and organize journeys.',
     size: '244 KB',
   },
