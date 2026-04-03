@@ -7,10 +7,10 @@ const snapToGrid = (value: number) => Math.round(value / GRID_SIZE) * GRID_SIZE;
 
 export function useDesktopIcons(initialIcons: DesktopIcon[]) {
   const [icons, setIcons] = useState(
-    initialIcons.map((icon, i) => ({
+    initialIcons.map((icon) => ({
       ...icon,
-      x: snapToGrid(20),
-      y: snapToGrid(20 + i * GRID_SIZE),
+      x: snapToGrid(icon.x),
+      y: snapToGrid(icon.y),
     }))
   );
   const [draggingIcon, setDraggingIcon] = useState<string | null>(null);
