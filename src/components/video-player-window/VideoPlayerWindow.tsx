@@ -156,7 +156,7 @@ export const VideoPlayerWindow: React.FC<VideoPlayerWindowProps> = ({
           ref={videoRef}
           src={track.src}
           style={{
-            maxWidth: '100%',
+            width: '100%',
             maxHeight: '100%',
             display: 'block',
             padding: '5px',
