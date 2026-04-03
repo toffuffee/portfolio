@@ -94,7 +94,7 @@ export const AboutWindow: React.FC = () => {
             <div className="groupbox">
               <span className="groupbox-title">About</span>
               <p style={{ fontSize: 11, lineHeight: 1.6, marginTop: 4 }}>
-                Hi! I'm a frontend developer with 4+ years of experience
+                Hi! I'm a frontend developer with 5+ years of experience
                 creating web applications. I love clean code, unique UI
                 solutions, and a fondness for Windows 98. In my free time, I
                 play Heroes of Might and Magic III.
