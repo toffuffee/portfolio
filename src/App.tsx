@@ -17,7 +17,6 @@ import { renderIcon } from './utils/renderIcon';
 const TRACKS: Track[] = [
   { title: 'Joji - Glimpse of Us', src: '/videos/video1.mp4' },
   { title: 'Joji - Last of a Dying Breed Dior', src: '/videos/video2.mp4' },
-  // Add more videos here, e.g.:
 ];
 
 const COMPONENTS: Record<string, React.FC> = {
@@ -88,8 +87,6 @@ const initialIcons: DesktopIcon[] = [
     x: 20,
     y: 420,
   },
-
-  // Четвёртый ряд
   {
     id: 'keen',
     label: 'Commander Keen',
