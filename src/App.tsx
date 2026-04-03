@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import type { DesktopIcon } from './types/types';
+import type { DesktopIcon, Track } from './types/types';
 import { ProjectsWindow } from './components/projects-window/ProjectsWindow';
 import { AboutWindow } from './components/about-window/AboutWindow';
 import { Window } from './components/window/Window';
@@ -11,7 +11,14 @@ import { useDesktopIcons } from './hooks/useDesktopIcons';
 import { MinesweeperWindow } from './components/minesweeper-window/MinesweeperWindow';
 import { BootScreen } from './components/boot-screen/BootScreen';
 import { DosGameWindow } from './components/dos-game-window/DosGameWindow';
+import { VideoPlayerWindow } from './components/video-player-window/VideoPlayerWindow';
 import { renderIcon } from './utils/renderIcon';
+
+const TRACKS: Track[] = [
+  { title: 'Joji - Glimpse of Us', src: '/videos/video1.mp4' },
+  { title: 'Joji - Last of a Dying Breed Dior', src: '/videos/video2.mp4' },
+  // Add more videos here, e.g.:
+];
 
 const COMPONENTS: Record<string, React.FC> = {
   projects: ProjectsWindow,
@@ -23,6 +30,7 @@ const COMPONENTS: Record<string, React.FC> = {
     <DosGameWindow bundleUrl="/games/earthworm/earthworm.jsdos" />
   ),
   ultima: () => <DosGameWindow bundleUrl="/games/ultima/ultima.jsdos" />,
+  video: () => <VideoPlayerWindow tracks={TRACKS} />,
 };
 
 const initialIcons: DesktopIcon[] = [
@@ -86,6 +94,15 @@ const initialIcons: DesktopIcon[] = [
     icon: '⚔️',
     component: 'ultima',
     defaultSize: { width: 800, height: 560 },
+    x: 0,
+    y: 0,
+  },
+  {
+    id: 'video',
+    label: 'Media Player',
+    icon: '🎬',
+    component: 'video',
+    defaultSize: { width: 600, height: 400 },
     x: 0,
     y: 0,
   },

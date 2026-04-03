@@ -209,7 +209,7 @@ body {
 .statusbar-pane {
   flex: 1;
   box-shadow: var(--border-sunken);
-  padding: 1px 4px;
+  padding: 2px 4px;
   font-size: 11px;
   overflow: hidden;
   white-space: nowrap;

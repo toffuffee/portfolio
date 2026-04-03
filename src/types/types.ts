@@ -14,6 +14,11 @@ export interface WindowState {
 
 export type Point = { x: number; y: number };
 
+export interface Track {
+  title: string;
+  src: string;
+}
+
 export type DesktopIcon = {
   id: string;
   label: string;
