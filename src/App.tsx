@@ -28,7 +28,6 @@ const COMPONENTS: Record<string, React.FC> = {
   earthworm: () => (
     <DosGameWindow bundleUrl="/games/earthworm/earthworm.jsdos" />
   ),
-  ultima: () => <DosGameWindow bundleUrl="/games/ultima/ultima.jsdos" />,
   video: () => <VideoPlayerWindow tracks={TRACKS} />,
 };
 
@@ -77,15 +76,6 @@ const initialIcons: DesktopIcon[] = [
     defaultSize: { width: 800, height: 560 },
     x: 40,
     y: 220,
-  },
-  {
-    id: 'ultima',
-    label: 'Ultima Underworld',
-    icon: '⚔️',
-    component: 'ultima',
-    defaultSize: { width: 800, height: 560 },
-    x: 20,
-    y: 420,
   },
   {
     id: 'keen',
